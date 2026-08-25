@@ -1,0 +1,12 @@
+{
+  "name": "8seneca-ui",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "build": "pnpm --filter 8seneca-app-launcher build",
+    "test": "pnpm --filter 8seneca-app-launcher test",
+    "type-check": "pnpm --filter 8seneca-app-launcher type-check"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "engines": { "node": ">=20.9.0" }
+}
