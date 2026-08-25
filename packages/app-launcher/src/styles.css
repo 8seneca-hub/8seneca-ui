@@ -1,1 +1,14 @@
-/* token block added in Task 5 */
+/*
+ * Token namespace for the launcher. Resolution order per token:
+ *   1. --launcher-*        an app's explicit override
+ *   2. the shadcn variable  (hrm, portal — free)
+ *   3. a light-only literal (last resort)
+ */
+@theme {
+  --color-launcher-surface: var(--launcher-surface, var(--popover, oklch(1 0 0)));
+  --color-launcher-fg: var(--launcher-fg, var(--popover-foreground, oklch(0.145 0 0)));
+  --color-launcher-muted: var(--launcher-muted, var(--muted-foreground, oklch(0.55 0 0)));
+  --color-launcher-hover: var(--launcher-hover, var(--accent, oklch(0.96 0 0)));
+  --color-launcher-border: var(--launcher-border, var(--border, oklch(0.92 0 0)));
+  --color-launcher-ring: var(--launcher-ring, var(--ring, currentColor));
+}
