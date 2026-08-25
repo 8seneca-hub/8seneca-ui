@@ -23,7 +23,7 @@ export const APPS: AppTile[] = [
   },
   {
     id: "portal",
-    name: "8Seneca Hub",
+    name: "8Hub",
     url: "https://portal.8seneca.com",
     icon: LayoutGrid,
     color: "oklch(0.65 0.15 150)",

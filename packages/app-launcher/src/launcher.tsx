@@ -1,4 +1,4 @@
-import { Grid3x3 } from "lucide-react";
+import { Grip } from "lucide-react";
 import { resolveApps } from "./apps";
 import { LauncherPanel } from "./panel";
 import type { AppLauncherProps } from "./types";
@@ -26,7 +26,7 @@ export function AppLauncher({ urls, label = "Your apps", align = "end" }: AppLau
         aria-label="Open app launcher"
         className={`${TRIGGER_BASE} h-9 w-9 hover:bg-launcher-hover`}
       >
-        <Grid3x3 className="h-5 w-5" aria-hidden="true" />
+        <Grip className="h-5 w-5" aria-hidden="true" />
       </button>
       {open && (
         <div className={`absolute top-11 z-50 ${align === "end" ? "right-0" : "left-0"}`}>
@@ -61,7 +61,7 @@ export function AppLauncherFab({ urls, label = "Your apps" }: AppLauncherProps =
         title="Open apps"
         className={`${TRIGGER_BASE} size-12 bg-launcher-surface border border-launcher-border shadow-lg transition-transform hover:scale-105`}
       >
-        <Grid3x3 className="size-5" aria-hidden="true" />
+        <Grip className="size-5" aria-hidden="true" />
       </button>
     </div>
   );
