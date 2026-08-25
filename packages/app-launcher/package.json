@@ -1,0 +1,38 @@
+{
+  "name": "8seneca-app-launcher",
+  "version": "0.1.0",
+  "description": "9-dot app launcher shared across the 8seneca apps",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/8seneca-hub/8seneca-ui.git",
+    "directory": "packages/app-launcher"
+  },
+  "type": "module",
+  "sideEffects": ["**/*.css"],
+  "files": ["dist"],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css"
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "pnpm build && node --test test/",
+    "type-check": "tsc --noEmit",
+    "prepublishOnly": "pnpm test"
+  },
+  "peerDependencies": {
+    "react": ">=18",
+    "lucide-react": ">=0.454"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "lucide-react": "^0.454.0",
+    "react": "^19.0.0",
+    "tsup": "^8.3.5",
+    "typescript": "^5.7.0"
+  }
+}
