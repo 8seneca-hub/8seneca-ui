@@ -2,6 +2,9 @@ import type { LucideIcon } from "lucide-react";
 
 export type AppId = "hrm" | "plane";
 
+/** Deployment ring — decides which host each tile points at. */
+export type RingId = "prod" | "kc-test" | "sandbox";
+
 export type AppTile = {
   id: AppId;
   name: string;

@@ -1,4 +1,4 @@
 export { AppLauncher, AppLauncherFab } from "./launcher";
 export { LauncherPanel } from "./panel";
-export { APPS, isCurrent, resolveApps } from "./apps";
-export type { AppId, AppLauncherProps, AppTile } from "./types";
+export { APPS, RINGS, isCurrent, resolveApps, ringFor } from "./apps";
+export type { AppId, AppLauncherProps, AppTile, RingId } from "./types";

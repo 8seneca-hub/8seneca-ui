@@ -12,7 +12,7 @@ const TRIGGER_BASE =
 export function AppLauncher({ urls, label = "Your apps", align = "end" }: AppLauncherProps = {}) {
   const { open, toggle, rootRef, triggerRef, panelId } = useLauncher();
   const hostname = useHostname();
-  const tiles = resolveApps(urls);
+  const tiles = resolveApps(urls, hostname);
 
   return (
     <div ref={rootRef} className="relative">
@@ -41,7 +41,7 @@ export function AppLauncher({ urls, label = "Your apps", align = "end" }: AppLau
 export function AppLauncherFab({ urls, label = "Your apps" }: AppLauncherProps = {}) {
   const { open, toggle, rootRef, triggerRef, panelId } = useLauncher();
   const hostname = useHostname();
-  const tiles = resolveApps(urls);
+  const tiles = resolveApps(urls, hostname);
 
   return (
     <div ref={rootRef} className="fixed bottom-6 right-6 z-50">
