@@ -1,4 +1,4 @@
-import { Briefcase, FolderKanban, LayoutGrid } from "lucide-react";
+import { Briefcase, FolderKanban } from "lucide-react";
 import type { AppId, AppTile } from "./types";
 
 /**
@@ -20,13 +20,6 @@ export const APPS: AppTile[] = [
     url: "https://projects.8seneca.com",
     icon: FolderKanban,
     color: "oklch(0.65 0.15 30)",
-  },
-  {
-    id: "portal",
-    name: "8Hub",
-    url: "https://portal.8seneca.com",
-    icon: LayoutGrid,
-    color: "oklch(0.65 0.15 150)",
   },
 ];
 

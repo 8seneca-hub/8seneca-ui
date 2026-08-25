@@ -5,7 +5,7 @@ import { APPS, isCurrent, resolveApps } from "../dist/index.js";
 test("registry lists the three apps in order", () => {
   assert.deepEqual(
     APPS.map((a) => a.id),
-    ["hrm", "plane", "portal"],
+    ["hrm", "plane"],
   );
   for (const app of APPS) {
     assert.match(app.url, /^https:\/\//, `${app.id} url must be absolute`);
@@ -21,7 +21,7 @@ test("resolveApps without overrides returns the registry unchanged", () => {
 
 test("resolveApps replaces only the overridden url and keeps order", () => {
   const tiles = resolveApps({ plane: "http://localhost:8000" });
-  assert.deepEqual(tiles.map((t) => t.id), ["hrm", "plane", "portal"]);
+  assert.deepEqual(tiles.map((t) => t.id), ["hrm", "plane"]);
   assert.equal(tiles[1].url, "http://localhost:8000");
   assert.equal(tiles[0].url, APPS[0].url);
   assert.equal(tiles[1].name, "8Projects");

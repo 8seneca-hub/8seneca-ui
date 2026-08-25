@@ -1,6 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 
-export type AppId = "hrm" | "plane" | "portal";
+export type AppId = "hrm" | "plane";
 
 export type AppTile = {
   id: AppId;
