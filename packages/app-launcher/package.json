@@ -9,8 +9,12 @@
     "directory": "packages/app-launcher"
   },
   "type": "module",
-  "sideEffects": ["**/*.css"],
-  "files": ["dist"],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -20,7 +24,7 @@
   },
   "scripts": {
     "build": "tsup",
-    "test": "pnpm build && node --test test/",
+    "test": "pnpm build && node --test test/*.test.mjs",
     "type-check": "tsc --noEmit",
     "prepublishOnly": "pnpm test"
   },
