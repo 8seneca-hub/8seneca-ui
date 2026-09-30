@@ -29,7 +29,7 @@ export function LauncherPanel({ tiles, hostname, label, id }: PanelProps) {
           const current = isCurrent(app, hostname);
           const body = (
             <>
-              <img src={app.logo} alt="" className="h-10 w-10 rounded-xl" />
+              <img src={app.logo} alt="" className="h-10 w-10 rounded-md" />
               <span className="text-[11px] font-medium">{app.name}</span>
             </>
           );
