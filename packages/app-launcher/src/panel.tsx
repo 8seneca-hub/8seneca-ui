@@ -26,16 +26,10 @@ export function LauncherPanel({ tiles, hostname, label, id }: PanelProps) {
       </p>
       <div className="grid grid-cols-3 gap-1">
         {tiles.map((app) => {
-          const Icon = app.icon;
           const current = isCurrent(app, hostname);
           const body = (
             <>
-              <span
-                className="flex h-10 w-10 items-center justify-center rounded-xl"
-                style={{ backgroundColor: app.color }}
-              >
-                <Icon className="h-5 w-5 text-white" strokeWidth={2} aria-hidden="true" />
-              </span>
+              <img src={app.logo} alt="" className="h-10 w-10 rounded-xl" />
               <span className="text-[11px] font-medium">{app.name}</span>
             </>
           );

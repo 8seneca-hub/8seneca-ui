@@ -1,6 +1,6 @@
 {
   "name": "8seneca-app-launcher",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "description": "9-dot app launcher shared across the 8seneca apps",
   "license": "MIT",
   "repository": {

@@ -1,6 +1,4 @@
-import type { LucideIcon } from "lucide-react";
-
-export type AppId = "hrm" | "plane";
+export type AppId = "hrm" | "plane" | "ai";
 
 /** Deployment ring — decides which host each tile points at. */
 export type RingId = "prod" | "kc-test" | "sandbox";
@@ -9,9 +7,8 @@ export type AppTile = {
   id: AppId;
   name: string;
   url: string;
-  icon: LucideIcon;
-  /** Any CSS colour string; painted behind the tile icon. */
-  color: string;
+  /** The app's square brand logo as an image URL; the panel rounds its corners. */
+  logo: string;
 };
 
 export type AppLauncherProps = {
