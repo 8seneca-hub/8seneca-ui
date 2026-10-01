@@ -1,4 +1,6 @@
-import { Briefcase, FolderKanban } from "lucide-react";
+import peopleLogo from "./logos/8people-logo.svg";
+import projectsLogo from "./logos/8projects-logo.png";
+import aiLogo from "./logos/8ai-logo.svg";
 import type { AppId, AppTile, RingId } from "./types";
 
 /**
@@ -6,10 +8,14 @@ import type { AppId, AppTile, RingId } from "./types";
  * served from (see RINGS), because a sandbox launcher linking to production is
  * a trap: it looks like it works right up until someone edits real data.
  */
-const TILES: { id: AppId; name: string; icon: AppTile["icon"]; color: string }[] = [
-  { id: "hrm", name: "8People", icon: Briefcase, color: "oklch(0.65 0.15 240)" },
-  { id: "plane", name: "8Projects", icon: FolderKanban, color: "oklch(0.65 0.15 30)" },
+const TILES: Omit<AppTile, "url">[] = [
+  { id: "hrm", name: "8People", logo: peopleLogo },
+  { id: "plane", name: "8Projects", logo: projectsLogo },
+  { id: "ai", name: "8AI", logo: aiLogo },
 ];
+
+/** 8AI has a single deployment, so every ring links to it. */
+const AI_URL = "https://8ai.up.railway.app/assistant";
 
 /**
  * One URL set per deployment ring. Baked in on purpose: the apps' env
@@ -20,18 +26,21 @@ export const RINGS: Record<RingId, Record<AppId, string>> = {
   prod: {
     hrm: "https://people.8seneca.com",
     plane: "https://projects.8seneca.com",
+    ai: AI_URL,
   },
   // The Keycloak test ring: hrm on its kc-test environment, Plane on its
   // sandbox one — the two that authenticate against the same realm.
   "kc-test": {
     hrm: "https://hr-systemweb-kc-test.up.railway.app",
     plane: "https://hub-plane-sandbox.up.railway.app",
+    ai: AI_URL,
   },
   // hrm's own sandbox environment. There is only one sandbox Plane, so it
   // points at the same host kc-test does.
   sandbox: {
     hrm: "https://hr-systemweb-sandbox.up.railway.app",
     plane: "https://hub-plane-sandbox.up.railway.app",
+    ai: AI_URL,
   },
 };
 

@@ -2,18 +2,18 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { APPS, RINGS, isCurrent, resolveApps, ringFor } from "../dist/index.js";
 
-test("registry lists the two apps in order", () => {
-  assert.deepEqual(APPS.map((a) => a.id), ["hrm", "plane"]);
+test("registry lists the three apps in order", () => {
+  assert.deepEqual(APPS.map((a) => a.id), ["hrm", "plane", "ai"]);
   for (const app of APPS) {
     assert.match(app.url, /^https:\/\//, `${app.id} url must be absolute`);
     assert.ok(app.name.length > 0);
-    assert.ok(typeof app.icon === "function" || typeof app.icon === "object");
+    assert.match(app.logo, /^data:image\/(svg\+xml|png)[;,]/, `${app.id} logo must be inlined`);
   }
 });
 
 test("every ring covers every app with an absolute url", () => {
   for (const [ring, urls] of Object.entries(RINGS)) {
-    for (const id of ["hrm", "plane"]) {
+    for (const id of ["hrm", "plane", "ai"]) {
       assert.match(urls[id], /^https:\/\//, `${ring}.${id} must be absolute`);
     }
   }
@@ -64,7 +64,7 @@ test("each non-prod host marks itself as the current app", () => {
 
 test("resolveApps replaces only the overridden url and keeps order", () => {
   const tiles = resolveApps({ plane: "http://localhost:8000" });
-  assert.deepEqual(tiles.map((t) => t.id), ["hrm", "plane"]);
+  assert.deepEqual(tiles.map((t) => t.id), ["hrm", "plane", "ai"]);
   assert.equal(tiles[1].url, "http://localhost:8000");
   assert.equal(tiles[0].url, APPS[0].url);
   assert.equal(tiles[1].name, "8Projects");
@@ -74,7 +74,7 @@ test("overrides win over the ring, and empty or unknown ids are ignored", () => 
   const host = "hub-plane-sandbox.up.railway.app";
   assert.equal(resolveApps({ hrm: "http://localhost:3000" }, host)[0].url, "http://localhost:3000");
   assert.equal(resolveApps({ hrm: "" }, host)[0].url, "https://hr-systemweb-kc-test.up.railway.app");
-  assert.deepEqual(resolveApps({ nope: "http://x" }, host).map((t) => t.id), ["hrm", "plane"]);
+  assert.deepEqual(resolveApps({ nope: "http://x" }, host).map((t) => t.id), ["hrm", "plane", "ai"]);
 });
 
 test("isCurrent matches the exact hostname only", () => {
